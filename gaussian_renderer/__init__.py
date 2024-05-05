@@ -38,7 +38,6 @@ def render(viewpoint_camera, pc, pipe, bg_color : torch.Tensor, scaling_modifier
 
     if min(pc.bg_color.shape) != 0:
         bg_color = torch.tensor([0., 0., 0.]).cuda()
-
     confidence = pc.confidence if pipe.use_confidence else torch.ones_like(pc.confidence)
     raster_settings = GaussianRasterizationSettings(
         image_height=int(viewpoint_camera.image_height),

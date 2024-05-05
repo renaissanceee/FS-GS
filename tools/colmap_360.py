@@ -140,9 +140,9 @@ def pipeline(scene, base_path, n_views):
     os.mkdir('images')
     os.system('colmap model_converter  --input_path ../sparse/0/ --output_path ../sparse/0/  --output_type TXT')
 
-
     images = {}
-    with open('../sparse/0/images.txt', "r") as fid:
+    txt_path=os.path.join(base_path, scene,'/sparse/0/images.txt')
+    with open(txt_path, "r") as fid:
         while True:
             line = fid.readline()
             if not line:
@@ -192,6 +192,6 @@ def pipeline(scene, base_path, n_views):
 
 
 for scene in ['bicycle', 'bonsai', 'counter', 'garden',  'kitchen', 'room', 'stump']:
-    pipeline(scene, base_path = '/ssd1/zehao/FSGS/dataset/mipnerf360/', n_views = 24)  # please use absolute path!
+    pipeline(scene, base_path = '/cluster/work/cvl/jiezcao/jiameng/FSGS/dataset/mipnerf360/', n_views = 24)  # please use absolute path!
 
 
